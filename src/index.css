@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark Portfolio Theme - Pure black with silver accents */
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 88%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 88%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 88%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 69%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 88%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 0 0% 83%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    transition: background 0.4s cubic-bezier(0.4,0,0.2,1), color 0.3s cubic-bezier(0.4,0,0.2,1), border-color 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  body {
+    @apply bg-black text-gray-200 font-inter antialiased;
+    background: linear-gradient(135deg, #000000 0%, #0D0D0D 50%, #1A1A1A 100%);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .silver-flash-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(192, 192, 192, 0.03) 50%, rgba(255, 255, 255, 0.05) 100%);
+  }
+
+  .silver-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .silver-border {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 2s infinite;
+  }
+
+  .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  }
+
+  .silver-glow-box {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 6px 0 rgba(192,192,192,0.06), 0 0 12px 0 rgba(192,192,192,0.03);
+    animation: silver-box-glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes silver-box-glow {
+    0% {
+      box-shadow: 0 0 6px 0 rgba(192,192,192,0.06), 0 0 12px 0 rgba(192,192,192,0.03);
+    }
+    100% {
+      box-shadow: 0 0 12px 0 #e0e0e0, 0 0 24px 0 #c0c0c0;
+    }
+  }
+
+  .glow-sparkle-effect {
+    filter: drop-shadow(0 0 16px #c0c0c0) drop-shadow(0 0 32px #e0e0e0);
+  }
+
+  .sparkle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 60%, #c0c0c0 100%, transparent 100%);
+    opacity: 0.7;
+    animation: sparkle-blink 1.5s infinite alternate;
+  }
+
+  @keyframes sparkle-blink {
+    0% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+    100% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+  }
+
+  .silver-glow-text {
+    text-shadow:
+      0 0 2px #e0e0e0,
+      0 0 4px #c0c0c0,
+      0 0 8px #ffffff;
+    color: #f8f8fa;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .silver-glow-box {
+    box-shadow: 0 0 8px 0 rgba(192,192,192,0.12), 0 0 16px 0 rgba(192,192,192,0.08);
+  }
+  .sparkle-bg, .SparklesBackground {
+    display: none !important;
+  }
+}
